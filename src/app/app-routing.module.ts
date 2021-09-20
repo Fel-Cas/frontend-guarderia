@@ -4,13 +4,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './components/signup/signup.component';
 import { SiginComponent } from './components/sigin/sigin.component';
 import { AuthGuard } from './guard/auth.guard';
+import { ListEmpleadoComponent } from './components/list-empleado/list-empleado.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'/signin',
+    redirectTo:'/inicio',
     pathMatch:'full'
 
+  },
+  {
+    path:'inicio',
+    component: InicioComponent
   },
   {
     path:'signup',
@@ -20,6 +26,14 @@ const routes: Routes = [
   {
     path:'signin',
     component:SiginComponent
+  },
+  {
+    path:'list-empleado',
+    component: ListEmpleadoComponent
+  },
+  {
+    path:'signup/:id',
+    component: SignupComponent
   }
 ];
 
