@@ -7,12 +7,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto ">
-         <ng-container *ngIf='!service.loggedIn(); else loggedIn'>
-          <li class="nav-item">
-            <a class="nav-link" routerLink='/signup' routerLinkActive='activate'>Registrarse</a>
-          </li>
-        </ng-container>
-        <ng-template #loggedIn>          
+          <ng-container *ngIf='!service.loggedIn(); else loggedIn'>
+            <li class="nav-item">
+              <a></a>
+            </li>
+          </ng-container>   
+        <ng-template #loggedIn>
           <li class="nav-item">
             <a class="nav-link"  routerLink='/list-empleado' routerLinkActive='activate'>Empleados</a>
           </li>

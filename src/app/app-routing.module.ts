@@ -32,7 +32,7 @@ const routes: Routes = [
     component: ListEmpleadoComponent
   },
   {
-    path:'signup/:id',
+    path:'edit-empleado/:id',
     component: SignupComponent
   }
 ];
