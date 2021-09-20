@@ -6,6 +6,8 @@ import { SiginComponent } from './components/sigin/sigin.component';
 import { AuthGuard } from './guard/auth.guard';
 import { ListEmpleadoComponent } from './components/list-empleado/list-empleado.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { SignupMascotaComponent } from './components/signup-mascota/signup-mascota.component';
+import { ListMascotaComponent } from './components/list-mascota/list-mascota.component';
 
 const routes: Routes = [
   {
@@ -34,7 +36,19 @@ const routes: Routes = [
   {
     path:'edit-empleado/:id',
     component: SignupComponent
-  }
+  },
+  {
+    path: 'signup-mascota',
+    component: SignupMascotaComponent
+  },
+  {
+    path: 'list-mascota',
+    component: ListMascotaComponent
+  },
+  {
+    path:'edit-mascota/:id',
+    component: SignupMascotaComponent
+  },
 ];
 
 @NgModule({

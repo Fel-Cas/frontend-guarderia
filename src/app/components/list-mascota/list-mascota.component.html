@@ -1,0 +1,26 @@
+<button class="btn btn-success float-end" routerLink="/signup-mascota">Agregar Mascota</button>
+<table *ngIf="listMascotas.length > 0" class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Raza</th>
+        <th scope="col">Tamaño</th>
+        <th scope="col">Año de Nacimiento</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mascota of listMascotas">
+        <td>{{mascota.id}}</td>
+        <td>{{mascota.name}}</td>
+        <td>{{ mascota.breed }}</td>
+        <td>{{ mascota.size }}</td>
+        <td>{{ mascota.birthYear }}</td>
+        <td>
+            <i [routerLink]="['/edit-mascota', mascota.id]" class="fas fa-edit text-primary"></i>
+            <i class="fas fa-trash text-danger"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>

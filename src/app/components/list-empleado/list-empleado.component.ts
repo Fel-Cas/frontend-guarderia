@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Empleado } from 'src/app/models/empleado/empleado';
-import { AuthService } from 'src/app/service/auth/auth.service';
+import { EmpleadosService } from 'src/app/service/empleados/empleados.service';
 
 @Component({
   selector: 'app-list-empleado',
@@ -13,14 +13,14 @@ export class ListEmpleadoComponent implements OnInit {
 
   displayedColumns: string[] = ['primerNombre', 'apellido', 'email', 'telefono', 'salario', 'role', 'acciones'];
 
-  constructor(private service: AuthService,) { }
+  constructor(private empleadoService: EmpleadosService,) { }
 
   ngOnInit(): void {
     this.obtenerEmpleados();
   }
 
   obtenerEmpleados(){
-    this.service.getEmpleados().subscribe(data => {
+    this.empleadoService.getEmpleados().subscribe(data => {
       console.log(data);      
       this.listEmpleados = data.empleados;
     }, error => {

@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          {{accion}}
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)='signUp()' [formGroup]="mascotaForm">
+            <div class="form-group">
+              <label for="id">identificacion</label>
+              <input type="text"  formControlName='id' class="form-control" placeholder="identificacion" required>
+            </div>
+            <div class="text-danger" *ngIf="mascotaForm.get('id')?.hasError('required') && mascotaForm.get('id')?.touched">
+              <span>La identificacion <strong> es obligaria</strong></span>
+            </div>
+            <div class="form-group">
+              <label for="namePet">Nombre</label>
+              <input type="text" formControlName='namePet' class="form-control" placeholder="Nombre" required >
+            </div>
+            <div class="text-danger" *ngIf="mascotaForm.get('namePet')?.hasError('required') && mascotaForm.get('namePet')?.touched">
+              <span>El nombre <strong> es obligario</strong></span>
+            </div>
+            <div class="form-group">
+              <label for="breed">Raza</label>
+              <input type="text" formControlName='breed' class="form-control" placeholder="Raza" required>
+            </div>
+            <div class="text-danger" *ngIf="mascotaForm.get('breed')?.hasError('required') && mascotaForm.get('breed')?.touched">
+              <span>La raza <strong> es obligaria</strong></span>
+            </div>
+            <div class="form-group">
+              <label for="size">Tamaño</label>
+              <input type="text" formControlName='size'  class="form-control" placeholder="Tamaño" required >
+            </div>
+            <div class="text-danger" *ngIf="mascotaForm.get('size')?.hasError('required') && mascotaForm.get('size')?.touched">
+              <span>El tamaño <strong> es obligario</strong></span>
+            </div>
+            <div class="form-group">
+              <label for="birthYear">Año de nacimiento</label>
+              <input type="number" formControlName='birthYear'  class="form-control" placeholder="Año de nacimiento" required>
+            </div>
+            <div class="text-danger" *ngIf="mascotaForm.get('birthYear')?.hasError('required') && mascotaForm.get('birthYear')?.touched">
+                <span>El año de nacimiento <strong> es obligario</strong></span>
+              </div>
+            <div class="form-group">
+              <label for="planDeVacunacion">Plan de Vacunacion</label>
+              <input type="text" formControlName='planDeVacunacion'  class="form-control" placeholder="Plan De Vacunacion" required >
+            </div>
+            <div class="text-danger" *ngIf="mascotaForm.get('planDeVacunacion')?.hasError('required') && mascotaForm.get('planDeVacunacion')?.touched">
+              <span>El plan de vacunacion <strong> es obligario</strong></span>
+            </div>
+            <div class="form-group">
+              <label for="cuidados">Cuidados</label>
+              <input type="text" formControlName='cuidados'  class="form-control" placeholder="Cuidados" required>
+            </div>
+            <div class="text-danger" *ngIf="mascotaForm.get('cuidados')?.hasError('required') && mascotaForm.get('cuidados')?.touched">
+              <span>Los cuidados a tener <strong> son obligarios</strong></span>
+            </div>
+            <div class="text-center">
+              <input type="submit" [disabled]="mascotaForm.invalid" value="Enviar" class="btn btn-primary btn-block">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

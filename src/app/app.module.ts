@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './components/shared/angular-material/angular-material/angular-material.module';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { SignupMascotaComponent } from './components/signup-mascota/signup-mascota.component';
+import { ListMascotaComponent } from './components/list-mascota/list-mascota.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     SignupComponent,
     SiginComponent,
     ListEmpleadoComponent,
-    InicioComponent
+    InicioComponent,
+    SignupMascotaComponent,
+    ListMascotaComponent
 
   ],
   imports: [
@@ -30,7 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthGuard,{

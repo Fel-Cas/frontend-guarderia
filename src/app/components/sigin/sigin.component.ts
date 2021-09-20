@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/service/auth/auth.service';
 @Component({
   selector: 'app-sigin',
@@ -13,7 +14,8 @@ export class SiginComponent implements OnInit {
     password:''
   }
   constructor(private service:AuthService,
-    private router:Router) { }
+    private router:Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +25,7 @@ export class SiginComponent implements OnInit {
         localStorage.setItem('token',res['token']);
         this.router.navigate(['/list-empleado']);
     },err=>{
+      this.toastr.error('Usuario o contraseña incorrecta', 'Ingreso Fallido!');
       console.log(err)
     })
   }

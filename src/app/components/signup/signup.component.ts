@@ -3,6 +3,7 @@ import { AuthService } from '../../service/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EmpleadosService } from 'src/app/service/empleados/empleados.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -26,22 +27,11 @@ export class SignupComponent implements OnInit {
   accion = 'Registrarse';
   id: string | null;
 
-  empleado={
-    id:'',
-    firstName: '',
-    secondName: '',
-    firstlastName: '',
-    secondlastName: '',
-    email:'',
-    birthday:'',
-    phoneNumber: '',
-    salary:'',
-    role:''
-  }
   constructor(private authService:AuthService,
     private router:Router,
     private aRouter: ActivatedRoute,
-    private empleadoService: EmpleadosService) { 
+    private empleadoService: EmpleadosService,
+    private toastr: ToastrService) { 
       this.id= this.aRouter.snapshot.paramMap.get('id');
     }
 
@@ -49,7 +39,7 @@ export class SignupComponent implements OnInit {
     this.esEditar();
   }
   signUp(){
-    const salario = parseInt(this.empleado.salary, 10);
+    const salario = parseInt(this.empleadoForm.value.salary, 10);
     console.log(salario);
     if(this.id !== null){
       this.empleadoService.actualizarEmpleado(this.id, this.empleadoForm.value).subscribe(
@@ -61,9 +51,10 @@ export class SignupComponent implements OnInit {
         }
       )
     } else {
-      this.authService.signUp(this.empleadoForm.value).subscribe(
+      this.empleadoService.crearEmpleado(this.empleadoForm.value).subscribe(
         res=>{
-          this.router.navigate(['/signup'])
+          this.toastr.success('El empleado fue registrado con exito!', 'Empleado Registrado!');
+          this.router.navigate(['/list-empleado']);
         },
         err=>{
           console.log(err);
@@ -75,7 +66,7 @@ export class SignupComponent implements OnInit {
   esEditar() {
     if(this.id !== null) {
       this.accion = 'Editar';
-      this.authService.obtenerEmpleado(this.id).subscribe(data => {        
+      this.empleadoService.obtenerEmpleado(this.id).subscribe(data => {        
         console.log(data.empleado.id);
         this.empleadoForm.setValue({          
           id: data.empleado.id,
