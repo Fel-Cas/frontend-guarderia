@@ -40,7 +40,6 @@ export class SignupComponent implements OnInit {
   }
   signUp(){
     const salario = parseInt(this.empleadoForm.value.salary, 10);
-    console.log(salario);
     if(this.id !== null){
       this.empleadoService.actualizarEmpleado(this.id, this.empleadoForm.value).subscribe(
         data => {
@@ -48,7 +47,6 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/list-empleado']);
         },
         err => {
-          console.log(err);
         }
       )
     } else {
@@ -71,8 +69,7 @@ export class SignupComponent implements OnInit {
   esEditar() {
     if(this.id !== null) {
       this.accion = 'Editar';
-      this.empleadoService.obtenerEmpleado(this.id).subscribe(data => {        
-        console.log(data.empleado.id);
+      this.empleadoService.obtenerEmpleado(this.id).subscribe(data => {
         this.empleadoForm.setValue({          
           id: data.empleado.id,
           firstName: data.empleado.firstName,

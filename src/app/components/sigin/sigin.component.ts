@@ -21,12 +21,10 @@ export class SiginComponent implements OnInit {
   }
   signIn(){
     this.service.signIn(this.user).subscribe(res=>{
-        console.log(res)
         localStorage.setItem('token',res['token']);
         this.router.navigate(['/list-empleado']);
     },err=>{
       this.toastr.error('Usuario o contraseña incorrecta', 'Ingreso Fallido!');
-      console.log(err)
     })
   }
 }

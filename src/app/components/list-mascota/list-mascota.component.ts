@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Mascota } from 'src/app/models/mascota/mascota';
 import { MascotasService } from 'src/app/service/mascotas/mascotas.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-list-mascota',
   templateUrl: './list-mascota.component.html',
@@ -12,12 +13,11 @@ export class ListMascotaComponent implements OnInit {
   listMascotas: Mascota[] = [];
   Error:String='';
 
-  displayedColumns: string[] = ['Nombre', 'Raza', 'Tamaño', 'Año de Nacimiento'];
-
 
   constructor(private mascotaService: MascotasService,
     private router:Router,
-    private aRouter: ActivatedRoute) { }
+    private aRouter: ActivatedRoute,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.obtenerMascotas();
@@ -25,7 +25,6 @@ export class ListMascotaComponent implements OnInit {
 
   obtenerMascotas(){
     this.mascotaService.getMascotas().subscribe(data => {
-      console.log(data);
       this.listMascotas = data.mascotas;
     }, error => {
       this.router.navigate(['/unauthorized']);
@@ -33,11 +32,11 @@ export class ListMascotaComponent implements OnInit {
   }
 
   eliminarMascota(id:any){
-    this.mascotaService.eliminarMascota(id).subscribe(data => {
+    this.mascotaService.eliminarMascota(id).subscribe(data => {      
+      this.toastr.success('La mascota fue eliminada con éxito', 'Mascota Eliminada');
       this.obtenerMascotas();
     }, error => {
       this.Error=error;
-      console.log(this.Error);
     });
   }
 

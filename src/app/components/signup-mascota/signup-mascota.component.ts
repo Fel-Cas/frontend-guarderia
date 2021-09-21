@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { EmpleadosService } from 'src/app/service/empleados/empleados.service';
 import { MascotasService } from 'src/app/service/mascotas/mascotas.service';
 
 @Component({
@@ -38,11 +37,10 @@ export class SignupMascotaComponent implements OnInit {
     if(this.id !== null){
       this.mascotaService.actualizarMascota(this.id, this.mascotaForm.value).subscribe(
         res => {
-          this.toastr.success('La información de la mascota fue actualizada con exito!', 'Mascota Registrada!');
+          this.toastr.success('La información de la mascota fue actualizada con exito!', 'Mascota Actualizada!');
           this.router.navigate(['/list-mascota']);
         },
         err => {
-          console.log(err);
           this.toastr.error(err.error.message, 'Hubo un error!');
         }
       )
@@ -53,7 +51,6 @@ export class SignupMascotaComponent implements OnInit {
           this.router.navigate(['/list-mascota']);
         },
         err=>{
-          console.log(err);
           this.toastr.error(err.error.message, 'Hubo un error!');
         }
       )
