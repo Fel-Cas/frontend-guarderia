@@ -58,7 +58,11 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/list-empleado']);
         },
         err=>{
-          console.log(err);
+          if(err.error.errors != null){
+            this.toastr.error(err.error.errors[0].msg, 'Hubo un error!');
+          } else {
+            this.toastr.error(err.error.message, 'Hubo un error!');
+          }                    
         }
       )
     }    
