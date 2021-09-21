@@ -17,10 +17,10 @@
         <td>{{mascota.name}}</td>
         <td>{{ mascota.breed }}</td>
         <td>{{ mascota.size }}</td>
-        <td>{{ mascota.birthYear }}</td>
+        <td>{{ mascota.birthyear }}</td>
         <td>
             <i [routerLink]="['/edit-mascota', mascota.id]" class="fas fa-edit text-primary pointer"></i>
-            <i class="fas fa-trash text-danger pointer"></i>
+            <i (click)="eliminarMascota(mascota.id)" class="fas fa-trash text-danger pointer"></i>
         </td>
       </tr>
     </tbody>

@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { SignupMascotaComponent } from './components/signup-mascota/signup-mascota.component';
 import { ListMascotaComponent } from './components/list-mascota/list-mascota.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ListMascotaComponent } from './components/list-mascota/list-mascota.com
     ListEmpleadoComponent,
     InicioComponent,
     SignupMascotaComponent,
-    ListMascotaComponent
+    ListMascotaComponent,
+    UnauthorizedComponent
 
   ],
   imports: [

@@ -21,11 +21,14 @@ export class MascotasService {
     return this.http.post(this.url+'/api-mascota/mascotas', mascota);
   }
 
-  obtenerMascota(id: string): Observable<any> {
+  obtenerMascota(id: any): Observable<any> {
     return this.http.get(this.url+ '/api-mascota/mascotas/' + id);
   }
 
   getMascotas(): Observable<any>{
     return this.http.get(this.url+'/api-mascota/mascotas');
+  }
+  eliminarMascota(id:any):Observable<any>{
+    return this.http.delete(this.url+ '/api-mascota/mascotas/' + id);
   }
 }

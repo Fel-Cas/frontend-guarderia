@@ -4,7 +4,7 @@ import { Empleado } from 'src/app/models/empleado/empleado';
 import { EmpleadosService } from 'src/app/service/empleados/empleados.service';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-list-empleado',
   templateUrl: './list-empleado.component.html',
@@ -20,20 +20,22 @@ export class ListEmpleadoComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true })  paginator: MatPaginator;
 
   constructor(private empleadoService: EmpleadosService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private router:Router,
+              private aRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.obtenerEmpleados();    
+    this.obtenerEmpleados();
     this.dataSource.paginator = this.paginator;
   }
 
   obtenerEmpleados(){
     this.empleadoService.getEmpleados().subscribe(data => {
-      console.log(data);      
+      console.log(data);
       this.listEmpleados = data.empleados;
       this.dataSource = new MatTableDataSource(data);
     }, error => {
-      console.log(error);
+      this.router.navigate(['/unauthorized']);
     })
   }
 

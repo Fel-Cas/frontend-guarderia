@@ -12,11 +12,10 @@ import { MascotasService } from 'src/app/service/mascotas/mascotas.service';
 })
 export class SignupMascotaComponent implements OnInit {
   mascotaForm=new FormGroup({
-    id: new FormControl(),
-    namePet: new FormControl(),
+    name: new FormControl(),
     breed: new FormControl(),
     size: new FormControl(),
-    birthYear: new FormControl(),
+    birthyear: new FormControl(),
     planDeVacunacion:new FormControl(),
     cuidados: new FormControl()
   });
@@ -27,7 +26,7 @@ export class SignupMascotaComponent implements OnInit {
     private aRouter: ActivatedRoute,
     private mascotaService: MascotasService,
     private toastr: ToastrService) {
-      this.id= this.aRouter.snapshot.paramMap.get('id');    
+      this.id= this.aRouter.snapshot.paramMap.get('id');
   }
 
   ngOnInit(): void {
@@ -38,43 +37,41 @@ export class SignupMascotaComponent implements OnInit {
     const año = parseInt(this.mascotaForm.value.birthYear, 10);
     if(this.id !== null){
       this.mascotaService.actualizarMascota(this.id, this.mascotaForm.value).subscribe(
-        data => {
-          console.log(data)
+        res => {
+          this.toastr.success('La información de la mascota fue actualizada con exito!', 'Mascota Registrada!');
+          this.router.navigate(['/list-mascota']);
         },
         err => {
           console.log(err);
+          this.toastr.error(err.error.message, 'Hubo un error!');
         }
       )
     } else {
       this.mascotaService.crearMascota(this.mascotaForm.value).subscribe(
         res=>{
           this.toastr.success('La mascota fue registrada con exito!', 'Mascota Registrada!');
-          this.router.navigate(['/list-empleado']);
+          this.router.navigate(['/list-mascota']);
         },
         err=>{
           console.log(err);
+          this.toastr.error(err.error.message, 'Hubo un error!');
         }
       )
-    }    
+    }
   }
 
 
   esEditar() {
     if(this.id !== null) {
       this.accion = 'Editar Mascota';
-      this.mascotaService.obtenerMascota(this.id).subscribe(data => {        
-        console.log(data.empleado.id);
-        this.mascotaForm.setValue({          
-          id: data.empleado.id,
-          firstName: data.empleado.firstName,
-          secondName: data.empleado.secondName,
-          firstlastName: data.empleado.firstlastName,
-          secondlastName: data.empleado.secondlastName,
-          email: data.empleado.email,
-          salary: data.empleado.salary,
-          birthday: data.empleado.birthday,
-          phoneNumber: data.empleado.phoneNumber,
-          role: data.empleado.role
+      this.mascotaService.obtenerMascota(this.id).subscribe(data => {
+        this.mascotaForm.setValue({
+          name: data.mascota.name,
+          breed: data.mascota.breed,
+          size: data.mascota.size,
+          birthyear: data.mascota.birthyear,
+          planDeVacunacion: data.mascota.planDeVacunacion,
+          cuidados: data.mascota.cuidados
         })
       })
     }

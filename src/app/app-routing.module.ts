@@ -9,6 +9,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { SignupMascotaComponent } from './components/signup-mascota/signup-mascota.component';
 import { ListMascotaComponent } from './components/list-mascota/list-mascota.component';
 
+import{UnauthorizedComponent} from'./components/unauthorized/unauthorized.component';
 const routes: Routes = [
   {
     path:'',
@@ -49,6 +50,11 @@ const routes: Routes = [
     path:'edit-mascota/:id',
     component: SignupMascotaComponent
   },
+  {
+    path:'unauthorized',
+    component:UnauthorizedComponent
+
+  }
 ];
 
 @NgModule({

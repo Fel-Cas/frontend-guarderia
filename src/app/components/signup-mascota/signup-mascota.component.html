@@ -6,18 +6,12 @@
         </div>
         <div class="card-body">
           <form (ngSubmit)='signUp()' [formGroup]="mascotaForm">
-            <div class="form-group">
-              <label for="id">identificacion</label>
-              <input type="text"  formControlName='id' class="form-control" placeholder="identificacion" required>
-            </div>
-            <div class="text-danger" *ngIf="mascotaForm.get('id')?.hasError('required') && mascotaForm.get('id')?.touched">
-              <span>La identificacion <strong> es obligaria</strong></span>
-            </div>
+
             <div class="form-group">
               <label for="namePet">Nombre</label>
-              <input type="text" formControlName='namePet' class="form-control" placeholder="Nombre" required >
+              <input type="text" formControlName='name' class="form-control" placeholder="Nombre" required >
             </div>
-            <div class="text-danger" *ngIf="mascotaForm.get('namePet')?.hasError('required') && mascotaForm.get('namePet')?.touched">
+            <div class="text-danger" *ngIf="mascotaForm.get('name')?.hasError('required') && mascotaForm.get('name')?.touched">
               <span>El nombre <strong> es obligario</strong></span>
             </div>
             <div class="form-group">
@@ -35,10 +29,10 @@
               <span>El tamaño <strong> es obligario</strong></span>
             </div>
             <div class="form-group">
-              <label for="birthYear">Año de nacimiento</label>
-              <input type="number" formControlName='birthYear'  class="form-control" placeholder="Año de nacimiento" required>
+              <label for="birthyear">Año de nacimiento</label>
+              <input type="number" formControlName='birthyear'  class="form-control" placeholder="Año de nacimiento" required>
             </div>
-            <div class="text-danger" *ngIf="mascotaForm.get('birthYear')?.hasError('required') && mascotaForm.get('birthYear')?.touched">
+            <div class="text-danger" *ngIf="mascotaForm.get('birthyear')?.hasError('required') && mascotaForm.get('birthyear')?.touched">
                 <span>El año de nacimiento <strong> es obligario</strong></span>
               </div>
             <div class="form-group">
