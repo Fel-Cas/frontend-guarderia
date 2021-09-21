@@ -1,4 +1,5 @@
 <button class="btn btn-success float-end" routerLink="/signup-mascota">Agregar Mascota</button>
+<h1>Lista de Mascotas</h1>
 <table *ngIf="listMascotas.length > 0" class="table table-striped mt-3">
     <thead>
       <tr>
@@ -18,9 +19,10 @@
         <td>{{ mascota.size }}</td>
         <td>{{ mascota.birthYear }}</td>
         <td>
-            <i [routerLink]="['/edit-mascota', mascota.id]" class="fas fa-edit text-primary"></i>
-            <i class="fas fa-trash text-danger"></i>
+            <i [routerLink]="['/edit-mascota', mascota.id]" class="fas fa-edit text-primary pointer"></i>
+            <i class="fas fa-trash text-danger pointer"></i>
         </td>
       </tr>
     </tbody>
   </table>
+  <h5 style="text-align: start; margin-top: 10px;" *ngIf="listMascotas.length == 0">No hay mascotas registradas</h5>

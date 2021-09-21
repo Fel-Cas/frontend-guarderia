@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
     salary:new FormControl(),
     role:new FormControl()
   });
-  accion = 'Registrarse';
+  accion = 'Registrar Empleado';
   id: string | null;
 
   constructor(private authService:AuthService,
@@ -44,7 +44,8 @@ export class SignupComponent implements OnInit {
     if(this.id !== null){
       this.empleadoService.actualizarEmpleado(this.id, this.empleadoForm.value).subscribe(
         data => {
-          console.log(data)
+          this.toastr.success('El empleado fue actualizado con éxito!', 'Empleado Actualizado!');
+          this.router.navigate(['/list-empleado']);
         },
         err => {
           console.log(err);
@@ -53,7 +54,7 @@ export class SignupComponent implements OnInit {
     } else {
       this.empleadoService.crearEmpleado(this.empleadoForm.value).subscribe(
         res=>{
-          this.toastr.success('El empleado fue registrado con exito!', 'Empleado Registrado!');
+          this.toastr.success('El empleado fue registrado con éxito!', 'Empleado Registrado!');
           this.router.navigate(['/list-empleado']);
         },
         err=>{

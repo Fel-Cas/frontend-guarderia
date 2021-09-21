@@ -27,4 +27,9 @@ export class EmpleadosService {
   crearEmpleado(user){
     return this.http.post(this.url+'/api-empleado/empleados',user);
   }
+
+  eliminarEmpleado(id: string): Observable<any>{
+    return this.http.delete(this.url+'/api-empleado/empleados/'+id);
+  }
+
 }
