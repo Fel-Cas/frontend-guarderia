@@ -17,6 +17,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { SignupMascotaComponent } from './components/signup-mascota/signup-mascota.component';
 import { ListMascotaComponent } from './components/list-mascota/list-mascota.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { SignupPropietarioComponent } from './components/signup-propietario/signup-propietario.component';
+import { ListPropietarioComponent } from './components/list-propietario/list-propietario.component';
+import { InfoMascotaComponent } from './components/info-mascota/info-mascota.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
     InicioComponent,
     SignupMascotaComponent,
     ListMascotaComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    SignupPropietarioComponent,
+    ListPropietarioComponent,
+    InfoMascotaComponent,
+    ModalComponent
 
   ],
   imports: [

@@ -1,0 +1,31 @@
+<div>  
+    <button class="btn btn-success float-end" routerLink="/signup-propietario">Agregar Propietario</button>
+    <h1>Lista de propietarios</h1>
+    <table *ngIf="listPropietarios.length > 0" class="table table-striped mt-3" [dataSource]="dataSource">
+        <thead>
+          <tr>
+            <th scope="col">Cédula</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Direccion</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let propietario of listPropietarios">
+            <td>{{propietario.id}}</td>
+            <td>{{ propietario.firstName }}</td>
+            <td>{{ propietario.firstlastName }}</td>
+            <td>{{ propietario.email }}</td>
+            <td>{{ propietario.homeAdress}}</td>
+            <td>
+                <i [routerLink]="['/edit-propietario', propietario.id]" class="fas fa-edit text-primary pointer"></i>
+                <i (click)="eliminarPropietario(propietario.id)" class="fas fa-trash text-danger pointer"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h5 style="text-align: start; margin-top: 10px;" *ngIf="listPropietarios.length == 0">No hay propietarios registrados</h5>
+    </div>
+    

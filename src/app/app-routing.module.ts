@@ -10,6 +10,10 @@ import { SignupMascotaComponent } from './components/signup-mascota/signup-masco
 import { ListMascotaComponent } from './components/list-mascota/list-mascota.component';
 
 import{UnauthorizedComponent} from'./components/unauthorized/unauthorized.component';
+import { SignupPropietarioComponent } from './components/signup-propietario/signup-propietario.component';
+import { ListPropietarioComponent } from './components/list-propietario/list-propietario.component';
+import { InfoMascotaComponent } from './components/info-mascota/info-mascota.component';
+import { ModalComponent } from './components/modal/modal.component';
 const routes: Routes = [
   {
     path:'',
@@ -47,14 +51,34 @@ const routes: Routes = [
     component: ListMascotaComponent
   },
   {
-    path:'edit-mascota/:id',
+    path: 'edit-mascota/:id',
     component: SignupMascotaComponent
+  },
+  {
+    path: 'signup-propietario',
+    component: SignupPropietarioComponent
+  },
+  {
+    path: 'list-propietario',
+    component: ListPropietarioComponent
+  },
+  {
+    path: 'edit-propietario/:id',
+    component: SignupPropietarioComponent
+  },
+  {
+    path: 'info-mascota/:id',
+    component: InfoMascotaComponent
   },
   {
     path:'unauthorized',
     component:UnauthorizedComponent
-
+  },
+  {
+    path: 'modal',
+    component: ModalComponent
   }
+  
 ];
 
 @NgModule({

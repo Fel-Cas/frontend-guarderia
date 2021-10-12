@@ -1,0 +1,26 @@
+<h1>Modal</h1>
+<hr>
+<ng-template #contenido let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Título Modal</h4>
+        <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        Este es el contenido de este modal.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. At reprehenderit eum provident quidem doloribus, beatae libero nihil incidunt aperiam repellat aut voluptatum saepe possimus rem, odit ullam ex facilis. Labore omnis provident, excepturi, aspernatur, nostrum accusamus perspiciatis veritatis esse magnam soluta nulla natus laborum quisquam ratione voluptatum. Laborum, dignissimos maxime rem unde possimus, laboriosam, a minima fuga exercitationem beatae saepe libero quaerat placeat qui ullam ad alias praesentium harum quas nam! Quae sapiente corporis voluptatibus consequuntur dolorem omnis a culpa vero, ut quisquam magni, aliquid, ab repellendus ipsa beatae eveniet harum deserunt unde accusantium expedita? Cumque cum reiciendis ex necessitatibus?
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="modal.close()">Ok</button>
+    </div>
+</ng-template>
+
+<button type="button" class="btn btn-outline-danger" (click)="openSM(contenido)">Lanzar Modal SM</button>
+<button type="button" class="btn btn-outline-success" (click)="openLG(contenido)">Lanzar Modal LG</button>
+<button type="button" class="btn btn-outline-secondary" (click)="openXL(contenido)">Lanzar Modal XL</button>
+<button type="button" class="btn btn-outline-primary" (click)="openCentrado(contenido)">Lanzar Modal Centrado</button>
+<button type="button" class="btn btn-outline-warning" (click)="openScroll(contenido)">Lanzar Modal Scroll</button>
+<hr>
+<button type="button" class="btn btn-outline-info" (click)="openBackground(contenido)">Lanzar Modal openBackground</button>
+<button type="button" class="btn btn-outline-dark" (click)="openWindow(contenido)">Lanzar Modal Window</button>

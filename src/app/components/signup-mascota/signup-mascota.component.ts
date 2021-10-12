@@ -11,6 +11,7 @@ import { MascotasService } from 'src/app/service/mascotas/mascotas.service';
 })
 export class SignupMascotaComponent implements OnInit {
   mascotaForm=new FormGroup({
+    idPropietario: new FormControl(),
     name: new FormControl(),
     breed: new FormControl(),
     size: new FormControl(),
@@ -45,14 +46,16 @@ export class SignupMascotaComponent implements OnInit {
         }
       )
     } else {
-      this.mascotaService.crearMascota(this.mascotaForm.value).subscribe(
+      this.mascotaService.crearMascota(this.mascotaForm.value).subscribe(        
         res=>{
           this.toastr.success('La mascota fue registrada con exito!', 'Mascota Registrada!');
           this.router.navigate(['/list-mascota']);
         },
         err=>{
+          console.log(this.mascotaForm.value);
           this.toastr.error(err.error.message, 'Hubo un error!');
-        }
+        },
+        
       )
     }
   }
@@ -63,6 +66,7 @@ export class SignupMascotaComponent implements OnInit {
       this.accion = 'Editar Mascota';
       this.mascotaService.obtenerMascota(this.id).subscribe(data => {
         this.mascotaForm.setValue({
+          idPropietario: data.mascota.idPropietario,
           name: data.mascota.name,
           breed: data.mascota.breed,
           size: data.mascota.size,

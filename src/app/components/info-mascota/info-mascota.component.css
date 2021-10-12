@@ -1,0 +1,12 @@
+.pointer{
+    cursor: pointer;
+}
+
+
+.block{
+    margin: 0;
+    display: block;
+}
+.top {
+    margin-top: 2%;
+}

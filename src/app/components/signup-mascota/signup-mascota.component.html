@@ -6,7 +6,13 @@
         </div>
         <div class="card-body">
           <form (ngSubmit)='signUp()' [formGroup]="mascotaForm">
-
+            <div class="form-group">
+              <label for="idPropietario">Cédula de propietario</label>
+              <input type="text" formControlName='idPropietario' class="form-control" placeholder="Cédula del propietario" required >
+            </div>
+            <div class="text-danger" *ngIf="mascotaForm.get('idPropietario')?.hasError('required') && mascotaForm.get('idPropietario')?.touched">
+              <span>La cédula del propietario <strong> es obligaria</strong></span>
+            </div>
             <div class="form-group">
               <label for="namePet">Nombre</label>
               <input type="text" formControlName='name' class="form-control" placeholder="Nombre" required >

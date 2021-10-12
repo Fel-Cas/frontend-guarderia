@@ -19,8 +19,9 @@
         <td>{{ mascota.size }}</td>
         <td>{{ mascota.birthyear }}</td>
         <td>
-            <i [routerLink]="['/edit-mascota', mascota.id]" class="fas fa-edit text-primary pointer"></i>
-            <i (click)="eliminarMascota(mascota.id)" class="fas fa-trash text-danger pointer"></i>
+            <i [routerLink]="['/edit-mascota', mascota.id]" class="fas fa-edit text-primary pointer margin"></i>
+            <i (click)="eliminarMascota(mascota.id)" class="fas fa-trash text-danger pointer margin"></i>
+            <i [routerLink]="['/info-mascota', mascota.id]" class="fas fa-info text-center pointer margin"></i>
         </td>
       </tr>
     </tbody>
