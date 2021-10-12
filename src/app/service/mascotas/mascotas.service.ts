@@ -38,6 +38,6 @@ export class MascotasService {
   }
 
   borrarMascotaPropietario(idMascota: string, datos:any){
-    return this.http.delete(this.url+'/api-mascota/mascota_propietarios/' + idMascota, datos);
+    return this.http.delete(this.url+'/api-mascota/mascota_propietarios/' + idMascota+'/'+datos);
   }
 }
