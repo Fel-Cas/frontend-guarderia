@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Mascota } from 'src/app/models/mascota/mascota';
 import { MascotasService } from 'src/app/service/mascotas/mascotas.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { DataSource } from '@angular/cdk/collections';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class InfoMascotaComponent implements OnInit {
   mascota: any;
   id: string | null;
   idPropietario: string | null;
+  datos: any = {};
 
   constructor(private mascotaService: MascotasService,
     private router:Router,
@@ -62,14 +64,16 @@ export class InfoMascotaComponent implements OnInit {
     )
   }
 
-  eliminarPropietario(){
-    this.mascotaService.borrarMascotaPropietario(this.id, this.mascotaForm.value).subscribe(
+  eliminarPropietario(idPropietario){    
+    this.datos.idPropietario = idPropietario;    
+    console.log(this.datos);
+    this.mascotaService.borrarMascotaPropietario(this.id, this.datos).subscribe(
       res =>{
         this.toastr.success('El propietario fue eliminado con éxito!', 'Propietario Eliminado!');
         this.obtenerMascota();
       }, error =>{
         console.log(error);
-        console.log(this.mascotaForm.value.idPropietario);
+        console.log(this.datos.idPropietario);
       }
     )
   }

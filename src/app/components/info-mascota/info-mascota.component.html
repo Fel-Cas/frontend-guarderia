@@ -18,7 +18,7 @@
       <tbody>
         <tr *ngFor="let propietario of mascota.propietarios">
           <td>{{propietario}}</td>            
-          <td><i (click)="eliminarPropietario()" class="fas fa-trash text-danger pointer margin"></i></td>
+          <td><i (click)="eliminarPropietario(propietario)" class="fas fa-trash text-danger pointer margin"></i></td>
         </tr>
       </tbody>
     </table>
