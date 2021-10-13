@@ -14,6 +14,7 @@ import { SignupPropietarioComponent } from './components/signup-propietario/sign
 import { ListPropietarioComponent } from './components/list-propietario/list-propietario.component';
 import { InfoMascotaComponent } from './components/info-mascota/info-mascota.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { AgendarCitaComponent } from './components/agendar-cita/agendar-cita.component';
 const routes: Routes = [
   {
     path:'',
@@ -69,6 +70,10 @@ const routes: Routes = [
   {
     path: 'info-mascota/:id',
     component: InfoMascotaComponent
+  },
+  {
+    path: 'agendar-cita',
+    component: AgendarCitaComponent
   },
   {
     path:'unauthorized',

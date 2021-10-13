@@ -21,6 +21,7 @@ import { SignupPropietarioComponent } from './components/signup-propietario/sign
 import { ListPropietarioComponent } from './components/list-propietario/list-propietario.component';
 import { InfoMascotaComponent } from './components/info-mascota/info-mascota.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { AgendarCitaComponent } from './components/agendar-cita/agendar-cita.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ModalComponent } from './components/modal/modal.component';
     SignupPropietarioComponent,
     ListPropietarioComponent,
     InfoMascotaComponent,
-    ModalComponent
+    ModalComponent,
+    AgendarCitaComponent
 
   ],
   imports: [
