@@ -18,7 +18,9 @@ export class AgendarCitaComponent implements OnInit {
   ];
 
   monthSelect: any[];
-  dateSelect: any;
+  dateSelect: any;  
+  dateValue: any;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -56,6 +58,13 @@ export class AgendarCitaComponent implements OnInit {
       const nextDate = this.dateSelect.clone().add(1, "month");
       this.getDaysFromDate(nextDate.format("MM"), nextDate.format("YYYY"));
     }
+  }
+
+  clickDay(day) {
+    const monthYear = this.dateSelect.format('YYYY-MM')
+    const parse = `${monthYear}-${day.value}`
+    const objectDate = moment(parse)
+    this.dateValue = objectDate;
   }
 
 }
