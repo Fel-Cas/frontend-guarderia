@@ -15,6 +15,8 @@ import { ListPropietarioComponent } from './components/list-propietario/list-pro
 import { InfoMascotaComponent } from './components/info-mascota/info-mascota.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { AgendarCitaComponent } from './components/agendar-cita/agendar-cita.component';
+import { CitasComponent } from './components/citas/citas.component';
+import { EditarCitaComponent } from './components/editar-cita/editar-cita.component';
 const routes: Routes = [
   {
     path:'',
@@ -37,47 +39,68 @@ const routes: Routes = [
   },
   {
     path:'list-empleado',
-    component: ListEmpleadoComponent
+    component: ListEmpleadoComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'edit-empleado/:id',
-    component: SignupComponent
+    component: SignupComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'signup-mascota',
-    component: SignupMascotaComponent
+    component: SignupMascotaComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'list-mascota',
-    component: ListMascotaComponent
+    component: ListMascotaComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'edit-mascota/:id',
-    component: SignupMascotaComponent
+    component: SignupMascotaComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'signup-propietario',
-    component: SignupPropietarioComponent
+    component: SignupPropietarioComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'list-propietario',
-    component: ListPropietarioComponent
+    component: ListPropietarioComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'edit-propietario/:id',
-    component: SignupPropietarioComponent
+    component: SignupPropietarioComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'info-mascota/:id',
-    component: InfoMascotaComponent
+    component: InfoMascotaComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'agendar-cita/:id',
-    component: AgendarCitaComponent
+    component: AgendarCitaComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'citas',
+    component: CitasComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'editar-cita/:id',
+    component: EditarCitaComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'unauthorized',
-    component:UnauthorizedComponent
+    component:UnauthorizedComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'modal',

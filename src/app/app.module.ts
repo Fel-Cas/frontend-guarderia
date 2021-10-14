@@ -22,6 +22,8 @@ import { ListPropietarioComponent } from './components/list-propietario/list-pro
 import { InfoMascotaComponent } from './components/info-mascota/info-mascota.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { AgendarCitaComponent } from './components/agendar-cita/agendar-cita.component';
+import { CitasComponent } from './components/citas/citas.component';
+import { EditarCitaComponent } from './components/editar-cita/editar-cita.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AgendarCitaComponent } from './components/agendar-cita/agendar-cita.com
     ListPropietarioComponent,
     InfoMascotaComponent,
     ModalComponent,
-    AgendarCitaComponent
+    AgendarCitaComponent,
+    CitasComponent,
+    EditarCitaComponent
 
   ],
   imports: [

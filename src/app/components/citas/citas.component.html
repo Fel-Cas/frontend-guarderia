@@ -1,0 +1,33 @@
+<div> 
+    <h1>Lista de citas activas</h1>
+    <table *ngIf="listCitas.length > 0" class="table table-striped mt-3" [dataSource]="dataSource">
+        <thead>
+          <tr>
+            <th scope="col">Estado del servicio</th>
+            <th scope="col">Novedades</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Id Mascota</th>
+            <th scope="col">Id Propietario</th>
+            <th scope="col">Acciones</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cita of listCitas">
+            <td>{{cita.estadoServicio}}</td>
+            <td>{{ cita.novedades }}</td>
+            <td>{{ cita.fecha }}</td>
+            <td>{{ cita.hora }}</td>
+            <td>{{ cita.idMascota}}</td>
+            <td>{{ cita.idPropietario}}</td>
+            <td>
+                <i [routerLink]="['/editar-cita', cita.id]" class="fas fa-edit text-primary pointer"></i>
+                <i (click)="desactivarServicio(cita.id)" class="fas fa-trash text-danger pointer"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h5 style="text-align: start; margin-top: 10px;" *ngIf="listCitas.length == 0">No hay citas registradas</h5>
+    </div>
+    

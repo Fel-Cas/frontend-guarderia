@@ -51,7 +51,6 @@ export class SignupPropietarioComponent implements OnInit {
       this.propietarioService.crearPropietario(this.propietarioForm.value).subscribe( res => {
         this.toastr.success('¡El propietario fue registrado con éxito!', 'Propietario Registrado');
         this.router.navigate(['/list-propietario']);
-        console.log(this.propietarioForm.value)
       }, err => {
         if(err.error.errors != null){
           this.toastr.error(err.error.errors[0].msg, 'Hubo un error');

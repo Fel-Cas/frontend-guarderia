@@ -28,9 +28,8 @@ export class ListPropietarioComponent implements OnInit {
   obtenerPropietarios(){
     this.propietarioService.getPropietarios().subscribe(data => {
       this.listPropietarios = data.propietarios;
-      console.log(data.propietarios);
     }, error => {
-      this.router.navigate(['/unathorized']);
+      this.router.navigate(['/unauthorized']);
     })
   }
 

@@ -52,7 +52,6 @@ export class SignupMascotaComponent implements OnInit {
           this.router.navigate(['/list-mascota']);
         },
         err=>{
-          console.log(this.mascotaForm.value);
           this.toastr.error(err.error.message, 'Hubo un error!');
         },
         

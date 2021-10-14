@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  //private url='https://back-pets.herokuapp.com';
-  private url='http://localhost:3000';
+  private url='https://back-pets.herokuapp.com';
+  //private url='http://localhost:3000';
   constructor(private http:HttpClient,private router:Router) { }
 
   

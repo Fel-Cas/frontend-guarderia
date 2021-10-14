@@ -46,7 +46,6 @@ export class InfoMascotaComponent implements OnInit {
     this.mascotaService.obtenerMascota(this.id).subscribe(
       data => {
         this.mascota = data.mascota;
-        console.log(this.mascota.propietarios)
       }
     );
 
@@ -59,21 +58,17 @@ export class InfoMascotaComponent implements OnInit {
         this.obtenerMascota();
       }, error => {
         this.toastr.error(error.error.message, 'Hubo un error');
-        console.log(error);
       }
     )
   }
 
   eliminarPropietario(idPropietario){
     this.datos.idPropietario = idPropietario;
-    console.log(this.datos);
     this.mascotaService.borrarMascotaPropietario(this.id,idPropietario).subscribe(
       res=>{
         this.toastr.success('El propietario fue eliminado con éxito!', 'Propietario Eliminado!');
         this.obtenerMascota();
       }, error =>{
-        console.log(error);
-        console.log(this.datos.idPropietario);
       }
     )
   }

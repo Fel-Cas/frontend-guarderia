@@ -47,22 +47,20 @@ export class AgendarCitaComponent implements OnInit {
     mascota: any;
 
   ngOnInit(): void {
-    console.log(this.dateDay);
   }
 
   agendarCita(){
     const id = parseInt(this.idMascota, 10);
     this.servicioForm.value.idMascota = id;
-    console.log(this.servicioForm.value);
     this.spaService.createServicio(this.servicioForm.value).subscribe(
       data => {
-        console.log('Exitoso');
+        this.router.navigate(['/info-mascota/'+id]),
+        this.toastr.success('La cita fue creada con éxito!', 'Cita Agendada!');
       }, error => {
-        console.log(error);
+        this.toastr.success(error.error.message, 'Hubo un error!');
       }
     )
   }
-
  
 
 }
