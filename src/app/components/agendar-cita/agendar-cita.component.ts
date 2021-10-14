@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment'
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { EmpleadosService } from 'src/app/service/empleados/empleados.service';
+import { MascotasService } from 'src/app/service/mascotas/mascotas.service';
+import { SpaService } from 'src/app/service/spa/spa.service';
+
 @Component({
   selector: 'app-agendar-cita',
   templateUrl: './agendar-cita.component.html',
@@ -7,64 +13,56 @@ import * as moment from 'moment'
 })
 export class AgendarCitaComponent implements OnInit {
 
-  week: any = [
-    "Lunes",
-    "Martes",
-    "Miercoles",
-    "Jueves",
-    "Viernes",
-    "Sabado",
-    "Domingo"
-  ];
+  servicioForm=new FormGroup({
+    estadoServicio: new FormControl(),
+    novedades: new FormControl(),
+    fecha: new FormControl(),
+    hora: new FormControl(),
+    idMascota: new FormControl(),
+    idPropietario:new FormControl()
+  });
+  accion = 'Agendar Cita';
+  idMascota: string | null;
+  idPropietario: string | null;
 
-  monthSelect: any[];
-  dateSelect: any;  
-  dateValue: any;
+  dateYear = new Date().getFullYear;
+  dateMonth = new Date().getMonth();
+  dateDay = new Date().getDate();
 
-  constructor() { }
+  estadoList: string[] = ["ASIGNADA", "EN PROGRESO", "FINALIZADA"];
+
+  horaList: string[] = ["08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00", "14:00:00", "15:00:00", "16:00:00", "17:00:00", "18:00:00"]
+
+
+
+  constructor(private spaService: SpaService,
+    private router:Router,
+    private aRouter: ActivatedRoute,
+    private mascotaService: MascotasService,
+    private toastr: ToastrService) { 
+      this.idMascota= this.aRouter.snapshot.paramMap.get('id');
+      this.idPropietario = this.aRouter.snapshot.paramMap.get('idPropietario');
+    }
+
+    mascota: any;
 
   ngOnInit(): void {
-    this.getDaysFromDate(10, 2021)
+    console.log(this.dateDay);
   }
 
-
-  getDaysFromDate(month, year) {
-
-    const startDate = moment(`${year}/${month}/01`)
-    const endDate = startDate.clone().endOf('month')
-    this.dateSelect = startDate;
-
-    const diffDays = endDate.diff(startDate, 'days', true)
-    const numberDays = Math.round(diffDays);
-
-    const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
-      a = parseInt(a) + 1;
-      const dayObject = moment(`${year}-${month}-${a}`);
-      return {
-        name: dayObject.format("dddd"),
-        value: a,
-        indexWeek: dayObject.isoWeekday()
-      };
-    });
-
-    this.monthSelect = arrayDays;
+  agendarCita(){
+    const id = parseInt(this.idMascota, 10);
+    this.servicioForm.value.idMascota = id;
+    console.log(this.servicioForm.value);
+    this.spaService.createServicio(this.servicioForm.value).subscribe(
+      data => {
+        console.log('Exitoso');
+      }, error => {
+        console.log(error);
+      }
+    )
   }
 
-  changeMonth(flag) {
-    if (flag < 0) {
-      const prevDate = this.dateSelect.clone().subtract(1, "month");
-      this.getDaysFromDate(prevDate.format("MM"), prevDate.format("YYYY"));
-    } else {
-      const nextDate = this.dateSelect.clone().add(1, "month");
-      this.getDaysFromDate(nextDate.format("MM"), nextDate.format("YYYY"));
-    }
-  }
-
-  clickDay(day) {
-    const monthYear = this.dateSelect.format('YYYY-MM')
-    const parse = `${monthYear}-${day.value}`
-    const objectDate = moment(parse)
-    this.dateValue = objectDate;
-  }
+ 
 
 }

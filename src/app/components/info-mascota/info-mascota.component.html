@@ -1,13 +1,12 @@
 <button class="btn btn-success float-end" routerLink="/signup-mascota">Agregar Mascota</button>
 <ng-template #verPropietarios let-modal>
   <div class="modal-header">
-    <h4 class="modal-title">Agregar Propietario</h4>
+    <h4 class="modal-title">Lista de propietarios de {{mascota.name}}</h4>
     <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
         <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <label class="block top" for="text">Lista de propietarios de {{mascota.name}}</label>
+  <div class="modal-body">    
     <table class="table table-striped mt-3">
       <thead>
         <tr>
@@ -55,6 +54,7 @@
         <th scope="col">Año de Nacimiento</th>
         <th scope="col">Propietarios</th>
         <th scope="col">Agregar Propietario</th>
+        <th scope="col">Agregar Cita</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -67,6 +67,7 @@
         <td>{{ mascota.birthyear }}</td>
         <td (click)="modal.open(verPropietarios)"><i class="far text-primary fa-eye pointer"></i></td>
         <td (click)="modal.open(agregarMascotaPropietario)"><i class="fas text-primary fa-user-plus pointer"></i></td>
+        <td><i  [routerLink]="['/agendar-cita', mascota.id]" class="fas text-primary fa-calendar-day pointer"></i></td>
       </tr>
     </tbody>
   </table>

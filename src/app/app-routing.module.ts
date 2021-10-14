@@ -72,7 +72,7 @@ const routes: Routes = [
     component: InfoMascotaComponent
   },
   {
-    path: 'agendar-cita',
+    path: 'agendar-cita/:id',
     component: AgendarCitaComponent
   },
   {

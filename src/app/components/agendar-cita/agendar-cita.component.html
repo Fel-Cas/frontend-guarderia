@@ -1,24 +1,46 @@
-<div class="wrapper-calendar">
-	<div class="header-calendar">
-		<div>
-			<button (click)="changeMonth(-1)" class="btn-prev">Antes</button>
+<div class="row">
+	<div class="col-md-6 mx-auto">
+	  <div class="card">
+		<div class="card-header">        
+		  {{accion}}
 		</div>
-		<h1>{{dateSelect | date:'MMMM, yyyy'}}</h1>
-		<div>
-			<button (click)="changeMonth(1)" class="btn-next">Siguiente</button>
+		<div class="card-body">
+		  <form (ngSubmit)='agendarCita()' [formGroup]="servicioForm">
+			<div class="form-group">
+			  	<label for="estadoServicio">Estado de Servicio</label>
+				<select type="text" name="estado"  formControlName='estadoServicio' class="form-control"  required>
+					<option [value]="estado" *ngFor="let estado of estadoList" selected>{{estado}}</option>
+				</select>
+			</div>
+			<div class="text-danger" *ngIf="servicioForm.get('estadoServicio')?.hasError('required') && servicioForm.get('estadoServicio')?.touched">
+			  <span>El estado del servicio <strong> es obligario</strong></span>
+			</div>
+			<div class="form-group">
+			  <label for="novedades">Novedades</label>
+			  <input type="text" formControlName='novedades' class="form-control" cols="100" rows="10" placeholder="Novedades">
+			</div>
+			<div class="form-group">
+			  <label for="fecha">Fecha</label>
+			  <input type="date" formControlName='fecha' class="form-control" placeholder="Fecha" min="dateYear-dateMonth-dateDay" required>
+			</div>
+			<div class="form-group">
+				<label for="hora">Hora</label>
+				<select type="text" formControlName='hora'  class="form-control" placeholder="hora" required>
+					<option [value]="hora" *ngFor="let hora of horaList">{{hora}}</option>
+				</select>
+			</div>
+			<div class="text-danger" *ngIf="servicioForm.get('hora')?.hasError('required') && servicioForm.get('hora')?.touched">
+			  <span>El primer apellido <strong> es obligario</strong></span>
+			</div>
+			<div class="form-group">
+			  <label for="idPropietario">Id Propietario</label>
+			  <input type="text" formControlName='idPropietario'  class="form-control" placeholder="Id Propietario">
+			</div>			
+			<div class="text-center">
+			  <input type="submit" [disabled]="servicioForm.invalid" value="Enviar" class="btn btn-primary btn-block">
+			</div>
+		  </form>
 		</div>
+	  </div>
 	</div>
-	<ol>
-		<li *ngFor="let day of week" class="day-name">{{day | slice:0:3}}</li>
-
-        <li (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
-         *ngFor="let day of monthSelect;let first = first">
-			<span>{{day?.value}}</span>
-		</li>
-	</ol>
-</div>
-
-<hr>
-<div>
-	Fecha: {{dateValue | date}}
-</div>
+  </div>
